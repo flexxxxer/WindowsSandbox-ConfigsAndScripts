@@ -3,7 +3,10 @@ New-Item -Path "C:\users\WDAGUtilityAccount\Desktop\" `
          -Name "Exes" `
          -ItemType "directory" -Force | Out-Null
 
+# one of two: drak mode, or high contrast
 & $PSScriptRoot\..\Scripts\DarkMode.ps1 | Write-Output
+# & $PSScriptRoot\..\Scripts\HighContrast.ps1 | Write-Output
+
 & $PSScriptRoot\..\Scripts\EnableDevModeSetupExplorer.ps1 | Write-Output
 & $PSScriptRoot\..\Scripts\InstallSoftware\PowerShell.Install.ps1 | Write-Output
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" `
