@@ -1,3 +1,5 @@
+New-Item -ItemType Directory -Force -Path $PSScriptRoot\CachedExes\ | Out-Null
+
 Get-ChildItem -Path $PSScriptRoot\CachedExes\ -Include *.* -File -Recurse | ForEach-Object { $_.Delete()}
 
 & pwsh.exe -File $PSScriptRoot\Scripts\DownloadSoftware\CppRedists.Get.ps1 | Write-Output
