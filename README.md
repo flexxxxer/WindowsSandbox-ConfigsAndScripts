@@ -1,1 +1,87 @@
-# SandboxScripts
+# WindowsSandbox-ConfigsAndScripts
+**WindowsSandbox-ConfigsAndScripts** is a set of commonly used [Windows Sandbox 
+configuration files](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-sandbox/windows-sandbox-configure-using-wsb-file) 
+for software development, software testing, and isolated running of untrusted applications.
+Because you cannot create Windows Sandbox profiles with preinstalled software and settings 
+this repository was made to automate frequently performed actions when starting Windows Sandbox
+(mainly pre-installing software and libraries, configuring, changing the appearance - turning on 
+a dark theme or high contrast mode).
+
+# Get Started
+## Requirements
+[Windows Sandbox](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-sandbox/windows-sandbox-overview)
+must be installed (the link also shows installation methods and minimum system requirements).
+
+## Changing mapped folders paths
+Most Windows Sandbox configurations use mapped folders. The paths specified in the configurations may not be 
+suitable for your computer and will need to be changed. Because paths must be explicitly specified and cannot be 
+automatically substituted, let's look at an example.
+
+[Downloads.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/Downloads.wsb) 
+configuration file, which has a mapped folder for the downloads folder:
+```xml
+<Configuration>
+  <VGpu>Enable</VGpu>
+  <Networking>Enable</Networking>
+  <ProtectedClient>Enable</ProtectedClient>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\Scripts</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\Users\flexer\Downloads</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>
+  </LogonCommand>
+</Configuration>
+```
+Any `<HostFolder>` tag has path, which depends on your computer's username and file structure, 
+and thus very likely needs to be changed. In this case, there are two HostFolder tags:
+`<HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>` and `<HostFolder>C:\Users\flexer\Downloads</HostFolder>`,
+where username "flexer" very likely not the username of your computer and you will need to change the username. 
+Also, my "SandboxScripts" folder and the folder of this repository cloned or downloaded by you may be located in a
+different location than "C:\Users\flexer\SandboxScripts", this path should be changed.
+
+## Ready-to-use configuration files and their description
+[DevEnv.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DevEnv.wsb): changes the
+appearance of the system by applying a Dark Mode, enabling dev mode in system, showing file extensions and hidden
+files and folders in explorer, installing .NET (6, 7, Legacy Framework from 4.6.2 up to 4.8.1), latest PowerShell,
+C++ Redistributable packages from 2008 up to latest (2022), Firefox and Visual Studio Code.
+
+[Downloads.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/Downloads.wsb): changes the
+appearance of the system by applying a Dark Mode, enabling dev mode in system, showing file extensions and hidden
+files and folders in explorer, opens explorer window at mapped from host downloads folder.
+
+## How its working
+Each `ConfigurationName.wsb` has a `ConfigurationName.wsb.cmd` and a `ConfigurationName.wsb.ps1`. Using `<LogonCommand>`
+`ConfigurationName.wsb` runs the `ConfigurationName.wsb.cmd` script in `Windows Sandbox`. Further, 
+`ConfigurationName.wsb.cmd` allows the execution of any PowerShell scripts in the system (by default this is 
+disabled for security reasons, but we are in a virtual sandbox), after which it launches `ConfigurationName.wsb.ps1`, 
+which launches scripts that execute other scripts that automate routine (installing software and libraries, 
+configuring, changing the appearance, etc).
+
+# FAQ
+Q: When i launching some `.wsb` configuration, then i have error "The configuration file was invalid" with 
+"The system cannot find the path specified".
+
+A: Check all `<HostFolder>` paths for validity and change change if path is invalid.
+
+Q: Downloading and installing software in Windows Sandbox is too long. how can i fix it?.
+
+A: Run `UpdateCachedExes.ps1` (which in root of repo) before running Windows Sandbox. This script simply 
+downloads the .exe/.msi/etc application installer files to the CachedExes folder, which is located in the folder 
+next to UpdateCachedExes.ps1. **It is enough to run this script once, it does not need to be run every time before 
+starting Windows Sandbox**.
+
+Q: When i using VPN at host, internet in Windows Sandbox not working. How to fix that?
+
+A: No way to fix that. Need to wait for a fix from microsoft
+
+# License
+WindowsSandbox-ConfigsAndScripts is Copyright © 2023 flexxxxer Aleksandr under the [Apache License, Version 2.0](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/LICENSE.txt).
