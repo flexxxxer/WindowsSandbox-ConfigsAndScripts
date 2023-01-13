@@ -3,7 +3,7 @@ New-Item -Path "C:\users\WDAGUtilityAccount\Desktop\" `
          -Name "Exes" `
          -ItemType "directory" -Force | Out-Null
 
-& $PSScriptRoot\..\Scripts\DarkMode.ps1 | Write-Output
+& $PSScriptRoot\..\Scripts\HighContrast.ps1 | Write-Output
 
 & $PSScriptRoot\..\Scripts\EnableDevModeSetupExplorer.ps1 | Write-Output
 & $PSScriptRoot\..\Scripts\InstallSoftware\PowerShell.Install.ps1 | Write-Output
