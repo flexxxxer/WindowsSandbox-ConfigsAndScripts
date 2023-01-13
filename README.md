@@ -54,9 +54,18 @@ appearance of the system by applying a Dark Mode, enabling dev mode in system, s
 files and folders in explorer, installing .NET (6, 7, Legacy Framework from 4.6.2 up to 4.8.1), latest PowerShell,
 C++ Redistributable packages from 2008 up to latest (2022), Firefox and Visual Studio Code.
 
-[Downloads.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/Downloads.wsb): changes the
-appearance of the system by applying a Dark Mode, enabling dev mode in system, showing file extensions and hidden
+[DevEnvHighContrast.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DevEnvHighContrast.wsb): 
+like previous one, but instead of applying a Dark Mode, this applying a high contrast.
+
+[Downloads.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/Downloads.wsb): 
+enabling dev mode in system, showing file extensions and hidden
 files and folders in explorer, opens explorer window at mapped from host downloads folder.
+
+[DownloadsDark.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DownloadsDark.wsb): changes the
+like previous one, but in a Dark Mode.
+
+[DownloadsHighContrast.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DownloadsHighContrast.wsb): changes the
+like previous one, but instead of applying a Dark Mode, this applying a high contrast.
 
 ## How its working
 Each `ConfigurationName.wsb` has a `ConfigurationName.wsb.cmd` and a `ConfigurationName.wsb.ps1`. Using `<LogonCommand>`
