@@ -26,13 +26,12 @@ configuration file, which has a mapped folder for the downloads folder:
   <ProtectedClient>Enable</ProtectedClient>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>
-      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\Scripts</SandboxFolder>
+      <HostFolder>C:\Users\%USERNAME%\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\Downloads</HostFolder>
-      <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads</SandboxFolder>
+      <HostFolder>C:\Users\%USERNAME%\Downloads</HostFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
   </MappedFolders>
@@ -41,12 +40,22 @@ configuration file, which has a mapped folder for the downloads folder:
   </LogonCommand>
 </Configuration>
 ```
-Any `<HostFolder>` tag has path, which depends on your computer's username and file structure, 
-and thus very likely needs to be changed. In this case, there are two HostFolder tags:
-`<HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>` and `<HostFolder>C:\Users\flexer\Downloads</HostFolder>`,
-where username "flexer" very likely not the username of your computer and you will need to change the username. 
-Also, my "SandboxScripts" folder and the folder of this repository cloned or downloaded by you may be located in a
-different location than "C:\Users\flexer\SandboxScripts", this path should be changed.
+In this case, there are two HostFolder tags: 
+1. `<HostFolder>C:\Users\%USERNAME%\WindowsSandbox-ConfigsAndScripts</HostFolder>`
+Specifies the repository folder on the host machine to share into the sandbox. In this case, we specify our repository folder with the necessary scripts to run it in the `<Command>` tag.
+`<SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>`
+Specifies the destination in the sandbox to map the folder to. If the folder doesn't exist, it will be created.
+2. `<HostFolder>C:\Users\%USERNAME%\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, in a sandbox. The folder must already exist on the host, or the container will fail to start. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop. `%USERNAME%` will get the name of the current user who running the *.wsb file of this repository.
+
+`<Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>`
+Specifies a single command that will be invoked automatically after the sandbox logs on.
+Make sure, your repository folder must be shared into to the sandbox, to run the script in the tag above. Otherwise a running *.wsb file will cause a crash.
+
+The size of the shared folder will not bebigger than 40 GB, according to Microsoft rules.
+
+Any <HostFolder> tag has path, which depends on your computer's username and file structure, and it needs to be changed by your requirements.
+
+Don't forget that in some cases you need to change the username from %USERNAME%. 
 
 ## Ready-to-use configuration files and their description
 [DevEnv.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DevEnv.wsb): changes the
@@ -79,7 +88,11 @@ configuring, changing the appearance, etc).
 Q: When i launching some `.wsb` configuration, then i have error "The configuration file was invalid" with 
 "The system cannot find the path specified".
 
-A: Check all `<HostFolder>` paths for validity and change change if path is invalid.
+A: Check all `<HostFolder>` paths for validity and change change if path is invalid. Or size of the shared folder bigger than 40 GB, according to Microsoft rules.
+
+Q: When i launching some `.wsb` configuration, then i have error "only one running instance of windows sandbox is allowed...".
+
+A: Kill stucked `Windows Sandbox` process in Task Manager. (Hotkey: Ctrl+Shift+ESC)
 
 Q: Downloading and installing software in Windows Sandbox is too long. how can i fix it?.
 
@@ -91,6 +104,10 @@ starting Windows Sandbox**.
 Q: When i using VPN at host, internet in Windows Sandbox not working. How to fix that?
 
 A: No way to fix that. Need to wait for a fix from microsoft
+
+Q: When i use some configuration in this repository i need change `%USERNAME%` to my pc name?
+
+A: In you running for current user - no. In another situation, working for another user, you need to change that.
 
 # License
 WindowsSandbox-ConfigsAndScripts is Copyright © 2023 flexxxxer Aleksandr under the [Apache License, Version 2.0](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/LICENSE.txt).
