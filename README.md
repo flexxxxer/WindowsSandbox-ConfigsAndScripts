@@ -47,9 +47,13 @@ Specifies the repository folder on the host machine to share into the sandbox. I
 Specifies the destination in the sandbox to map the folder to. If the folder doesn't exist, it will be created.
 2. `<HostFolder>C:\Users\%USERNAME%\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, in a sandbox. The folder must already exist on the host, or the container will fail to start. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop. `%USERNAME%` will get the name of the current user who running the *.wsb file of this repository.
 
+`<ReadOnly>true</ReadOnly>`
+If true, the shared folder is read-only accessible from the container. The default value is false.
+
 `<Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>`
 Specifies a single command that will be invoked automatically after the sandbox logs on.
 Make sure, your repository folder must be shared into to the sandbox, to run the script in the tag above. Otherwise a running *.wsb file will cause a crash.
+
 
 The size of the shared folder will not bebigger than 40 GB, according to Microsoft rules.
 
