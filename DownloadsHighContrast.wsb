@@ -14,6 +14,6 @@
     </MappedFolder>
   </MappedFolders>
   <LogonCommand>
-    <Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\DownloadsHighContrast.wsb.cmd</Command>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts\SandboxStartups\DownloadsHighContrast.wsb.cmd</Command>
   </LogonCommand>
 </Configuration>
