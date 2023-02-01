@@ -54,9 +54,6 @@ If true, the shared folder is read-only accessible from the container. The defau
 Specifies a single command that will be invoked automatically after the sandbox logs on.
 Make sure, your repository folder must be shared into to the sandbox, to run the script in the tag above. Otherwise a running *.wsb file will cause a crash.
 
-
-The size of the shared folder will not bebigger than 40 GB, according to Microsoft rules.
-
 Any <HostFolder> tag has path, which depends on your computer's username and file structure, and it needs to be changed by your requirements.
 
 Don't forget that in some cases you need to change the username from flexer. 
@@ -92,7 +89,7 @@ configuring, changing the appearance, etc).
 Q: When i launching some `.wsb` configuration, then i have error "The configuration file was invalid" with 
 "The system cannot find the path specified".
 
-A: Check all `<HostFolder>` paths for validity and change change if path is invalid. Or size of the shared folder bigger than 40 GB, according to Microsoft rules.
+A: Check all `<HostFolder>` paths for validity and change change if path is invalid.
 
 Q: When i launching some `.wsb` configuration, then i have error "only one running instance of windows sandbox is allowed...".
 
