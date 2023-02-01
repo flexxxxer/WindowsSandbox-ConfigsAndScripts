@@ -4,16 +4,17 @@
   <MemoryInMB>8192</MemoryInMB>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>
-      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\Scripts</SandboxFolder>
+      <HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
       <HostFolder>C:\Users\flexer\source\repos</HostFolder>
+	  <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\repos</SandboxFolder>
       <ReadOnly>false</ReadOnly>
     </MappedFolder>
   </MappedFolders>
   <LogonCommand>
-    <Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\DevEnv.wsb.cmd</Command>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts\SandboxStartups\DevEnv.wsb.cmd</Command>
   </LogonCommand>
 </Configuration>

@@ -1,11 +1,12 @@
 <Configuration>
   <VGpu>Enable</VGpu>
   <Networking>Enable</Networking>
+  <MemoryInMB>8192</MemoryInMB>
   <ProtectedClient>Enable</ProtectedClient>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\SandboxScripts</HostFolder>
-      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\Scripts</SandboxFolder>
+      <HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
@@ -15,6 +16,6 @@
     </MappedFolder>
   </MappedFolders>
   <LogonCommand>
-    <Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts\SandboxStartups\Downloads.wsb.cmd</Command>
   </LogonCommand>
 </Configuration>
