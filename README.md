@@ -48,7 +48,7 @@ repository folder with the necessary scripts to run it in the `<Command>` tag. T
 or the container will fail to start. 
 `<SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>`
 Specifies the destination in the sandbox to map the folder to. If the folder doesn't exist, it will be created.
-2. `<HostFolder>C:\Users\flexer\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, 
+2. `<HostFolder>C:\Users\%username%\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, 
 in a sandbox. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop.
 
 `<ReadOnly>true</ReadOnly>`
@@ -60,8 +60,6 @@ Make sure, your repository folder must be shared into to the sandbox, to run the
 will cause a crash.
 
 Any <HostFolder> tag has path, which depends on your computer's username and file structure, and it needs to be changed by your requirements.
-
-Don't forget that in some cases you need to change the username from flexer. 
 
 ## Ready-to-use configuration files and their description
 [DevEnv.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DevEnv.wsb): changes the
