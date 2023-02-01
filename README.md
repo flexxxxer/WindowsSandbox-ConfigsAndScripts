@@ -26,33 +26,38 @@ configuration file, which has a mapped folder for the downloads folder:
   <ProtectedClient>Enable</ProtectedClient>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <HostFolder>C:\Users\%username%\WindowsSandbox-ConfigsAndScripts</HostFolder>
       <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
-      <HostFolder>C:\Users\flexer\Downloads</HostFolder>
+      <HostFolder>C:\Users\%username%\Downloads</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
   </MappedFolders>
   <LogonCommand>
-    <Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts\SandboxStartups\Downloads.wsb.cmd</Command>
   </LogonCommand>
 </Configuration>
 ```
 In this case, there are two HostFolder tags: 
-1. `<HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>`
-Specifies the repository folder on the host machine to share into the sandbox. In this case, we specify our repository folder with the necessary scripts to run it in the `<Command>` tag. The folder must already exist on the host, or the container will fail to start. 
+1. `<HostFolder>C:\Users\%username%\WindowsSandbox-ConfigsAndScripts</HostFolder>`
+Specifies the repository folder on the host machine to share into the sandbox. In this case, we specify our 
+repository folder with the necessary scripts to run it in the `<Command>` tag. The folder must already exist on the host, 
+or the container will fail to start. 
 `<SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>`
 Specifies the destination in the sandbox to map the folder to. If the folder doesn't exist, it will be created.
-2. `<HostFolder>C:\Users\flexer\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, in a sandbox. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop.
+2. `<HostFolder>C:\Users\flexer\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, 
+in a sandbox. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop.
 
 `<ReadOnly>true</ReadOnly>`
 If true, the shared folder is read-only accessible from the container. The default value is false.
 
 `<Command>C:\Users\WDAGUtilityAccount\Desktop\Scripts\SandboxStartups\Downloads.wsb.cmd</Command>`
 Specifies a single command that will be invoked automatically after the sandbox logs on.
-Make sure, your repository folder must be shared into to the sandbox, to run the script in the tag above. Otherwise a running *.wsb file will cause a crash.
+Make sure, your repository folder must be shared into to the sandbox, to run the script in the tag above. Otherwise a running *.wsb file 
+will cause a crash.
 
 Any <HostFolder> tag has path, which depends on your computer's username and file structure, and it needs to be changed by your requirements.
 
@@ -95,7 +100,7 @@ Q: When i launching some `.wsb` configuration, then i have error "only one runni
 
 A: Kill stucked `Windows Sandbox` process in Task Manager. (Hotkey: Ctrl+Shift+ESC)
 
-Q: Downloading and installing software in Windows Sandbox is too long. how can i fix it?
+Q: Downloading and installing software in Windows Sandbox is too long. How can i fix it?
 
 A: Run `UpdateCachedExes.ps1` (which in root of repo) before running Windows Sandbox. This script simply 
 downloads the .exe/.msi/etc application installer files to the CachedExes folder, which is located in the folder 
