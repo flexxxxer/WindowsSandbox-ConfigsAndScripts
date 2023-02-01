@@ -4,12 +4,13 @@
   <MemoryInMB>8192</MemoryInMB>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\%USERNAME%\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>
       <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
-      <HostFolder>C:\Users\%USERNAME%\source\repos</HostFolder>
+      <HostFolder>C:\Users\flexer\source\repos</HostFolder>
+	  <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\repos</SandboxFolder>
       <ReadOnly>false</ReadOnly>
     </MappedFolder>
   </MappedFolders>

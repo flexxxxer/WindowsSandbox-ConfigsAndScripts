@@ -26,12 +26,12 @@ configuration file, which has a mapped folder for the downloads folder:
   <ProtectedClient>Enable</ProtectedClient>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Users\%USERNAME%\WindowsSandbox-ConfigsAndScripts</HostFolder>
+      <HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>
       <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
     <MappedFolder>
-      <HostFolder>C:\Users\%USERNAME%\Downloads</HostFolder>
+      <HostFolder>C:\Users\flexer\Downloads</HostFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
   </MappedFolders>
@@ -41,11 +41,11 @@ configuration file, which has a mapped folder for the downloads folder:
 </Configuration>
 ```
 In this case, there are two HostFolder tags: 
-1. `<HostFolder>C:\Users\%USERNAME%\WindowsSandbox-ConfigsAndScripts</HostFolder>`
-Specifies the repository folder on the host machine to share into the sandbox. In this case, we specify our repository folder with the necessary scripts to run it in the `<Command>` tag.
+1. `<HostFolder>C:\Users\flexer\WindowsSandbox-ConfigsAndScripts</HostFolder>`
+Specifies the repository folder on the host machine to share into the sandbox. In this case, we specify our repository folder with the necessary scripts to run it in the `<Command>` tag. The folder must already exist on the host, or the container will fail to start. 
 `<SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\WindowsSandbox-ConfigsAndScripts</SandboxFolder>`
 Specifies the destination in the sandbox to map the folder to. If the folder doesn't exist, it will be created.
-2. `<HostFolder>C:\Users\%USERNAME%\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, in a sandbox. The folder must already exist on the host, or the container will fail to start. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop. `%USERNAME%` will get the name of the current user who running the *.wsb file of this repository.
+2. `<HostFolder>C:\Users\flexer\Downloads</HostFolder>` shows an example of sharing a user folder, such as Downloads, in a sandbox. If the `<SandboxFolder>` tag is not specified, the folder will be created on the desktop.
 
 `<ReadOnly>true</ReadOnly>`
 If true, the shared folder is read-only accessible from the container. The default value is false.
@@ -59,7 +59,7 @@ The size of the shared folder will not bebigger than 40 GB, according to Microso
 
 Any <HostFolder> tag has path, which depends on your computer's username and file structure, and it needs to be changed by your requirements.
 
-Don't forget that in some cases you need to change the username from %USERNAME%. 
+Don't forget that in some cases you need to change the username from flexer. 
 
 ## Ready-to-use configuration files and their description
 [DevEnv.wsb](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/DevEnv.wsb): changes the
@@ -98,7 +98,7 @@ Q: When i launching some `.wsb` configuration, then i have error "only one runni
 
 A: Kill stucked `Windows Sandbox` process in Task Manager. (Hotkey: Ctrl+Shift+ESC)
 
-Q: Downloading and installing software in Windows Sandbox is too long. how can i fix it?.
+Q: Downloading and installing software in Windows Sandbox is too long. how can i fix it?
 
 A: Run `UpdateCachedExes.ps1` (which in root of repo) before running Windows Sandbox. This script simply 
 downloads the .exe/.msi/etc application installer files to the CachedExes folder, which is located in the folder 
@@ -107,11 +107,7 @@ starting Windows Sandbox**.
 
 Q: When i using VPN at host, internet in Windows Sandbox not working. How to fix that?
 
-A: No way to fix that. Need to wait for a fix from microsoft
-
-Q: When i use some configuration in this repository i need change `%USERNAME%` to my pc name?
-
-A: In you running for current user - no. In another situation, working for another user, you need to change that.
+A: No way to fix that. Need to wait for a fix from microsoft.
 
 # License
 WindowsSandbox-ConfigsAndScripts is Copyright © 2023 flexxxxer Aleksandr under the [Apache License, Version 2.0](https://github.com/flexxxxer/WindowsSandbox-ConfigsAndScripts/blob/master/LICENSE.txt).
