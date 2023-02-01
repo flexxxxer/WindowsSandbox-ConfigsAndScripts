@@ -11,7 +11,7 @@
     </MappedFolder>
     <MappedFolder>
       <HostFolder>C:\Users\flexer\Downloads</HostFolder>
-      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\repos</SandboxFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
   </MappedFolders>
