@@ -1,5 +1,5 @@
 $FolderWithExes = (Get-Item $PSScriptRoot).Parent.Parent.FullName + "\CachedExes\"
-$fileToExecute = "powershell-7.3.1.msi"
+$fileToExecute = "powershell-7.3.2.msi"
 
 if (-not (Test-Path -Path ($FolderWithExes + $fileToExecute) -PathType Leaf)) {
     $FolderWithExes = (Get-Item $PSScriptRoot).Parent.Parent.Parent.FullName + "\Exes\"
