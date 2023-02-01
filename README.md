@@ -92,7 +92,7 @@ configuring, changing the appearance, etc).
 Q: When i launching some `.wsb` configuration, then i have error "The configuration file was invalid" with 
 "The system cannot find the path specified".
 
-A: Check all `<HostFolder>` paths for validity and change change if path is invalid. Or size of the shared folder bigger than 40 GB, according to Microsoft rules.
+A: Check all `<HostFolder>` paths for validity and change change if path is invalid.
 
 Q: When i launching some `.wsb` configuration, then i have error "only one running instance of windows sandbox is allowed...".
 
